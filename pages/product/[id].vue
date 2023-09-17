@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useProductStore } from "~/store/productStore";
 import { onMounted } from "#imports";
+import { useCartStore } from "~/store/cartStore";
 
 const id = useRoute().params.id;
 definePageMeta({
@@ -8,10 +9,12 @@ definePageMeta({
 });
 
 const productStore = useProductStore();
+const cartStore = useCartStore();
 const product = ref(productStore.filterDataProduct(Number(id)));
 
-onMounted(async () => {
-  await productStore.fetchDataProduct;
+onMounted(() => {
+  productStore.fetchDataProduct;
+  cartStore.getCartProducts();
 });
 </script>
 
@@ -33,8 +36,16 @@ onMounted(async () => {
           Product Detail
         </h1>
         <div>
-          <button class="flex bg-[#0984DD] px-4 items-center rounded-lg gap-2 h-11">
+          
+
+         
+          <button
+            class="flex bg-[#0984DD] px-4 items-center rounded-lg gap-2 h-11"
+            @click="cartStore.addItemProducts(product, 1)"
+          >
+          <NuxtLink to="/cart">
             <img src="../../assets/svg/plus.svg" alt="" />
+          </NuxtLink>
             <h1 class="font-sans text-sm font-semibold leading-5 text-white">
               Add to Cart
             </h1>
@@ -45,8 +56,8 @@ onMounted(async () => {
   </section>
 
   <section>
-    <div class="container px-0 pt-16 pb-[72px]">
-      <div class="flex gap-10 px-[100px]">
+    <div class="container px-20 pt-16 pb-[72px]">
+      <div class="flex justify-between ">
         <Galery :products="product" :key="product?.id" />
         <Details :products="product" :key="product?.id" />
       </div>

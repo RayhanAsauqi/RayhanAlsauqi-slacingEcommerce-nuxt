@@ -1,45 +1,41 @@
-import { defineStore } from "pinia";
-import axios from "axios";
-import { Product } from "~/types/main";
+  import { defineStore } from "pinia";
+  import axios from "axios";
+  import { Product } from "~/types/main";
 
-export const useProductStore = defineStore("product", {
-  state: (): {
-    products: Product[];
-    searchQuery: string
-
-  } => ({
-    products: [],
-    searchQuery: '',
-  }),
-  getters: {
-    filterDataProduct: (state) => (id: number) => {
-      return state.products.find((products) => products.id === id);
-    },
-  },
-  actions: {
-    async fetchDataProduct() {
-      try {
-        const response = await axios.get("https://dummyjson.com/products");
-        this.products = response.data.products;
-        console.log(this.products);
-      } catch (error) {
-        console.log("Error fetcing data", error);
-      }
-    },
-    async searchProduct() {
-      try {
-        
-        if(this.searchQuery !== ""){
-          const response = await axios.post("https://dummyjson.com/products", {
-            title: this.searchProduct
-          })
-
-          this.searchQuery = ''
+  export const useProductStore = defineStore("product", {
+    state: (): {
+      products: Product[];
+      searchProducts: string
+    } => ({
+      products: [],
+      searchProducts: '',
+    }),
+    getters: {
+      filterDataProduct: (state) => (id: number) => {
+        return state.products.find((products) => products.id === id);
+      },
+      filteredProducts: (state) => {
+        if(!state.searchProducts){
+          return state.products
         }
-       
-      } catch (error) {
-        // console.log(error)
-      }
+        return state.products.filter((item) => {
+          const product = item.title?.toLowerCase()
+          return product?.match( state.searchProducts.toLowerCase())
+        }
+        )
+      },
     },
-  },
-});
+    actions: {
+      async fetchDataProduct() {
+        try {
+          const response = await axios.get("https://dummyjson.com/products");
+          this.products = response.data.products;
+          // console.log(this.products);
+        } catch (error) {
+          console.log("Error fetcing data", error);
+        }
+      },
+      
+      
+    },
+  });

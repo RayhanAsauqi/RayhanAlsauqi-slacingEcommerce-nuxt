@@ -1,18 +1,24 @@
 <script setup lang="ts">
-import { Product } from '~/types/main';
+import { useProductStore } from "~/store/productStore";
+import { Product } from "~/types/main";
 
+const productStore = useProductStore();
+defineProps<{
+  products: Product;
+}>();
 
+onMounted(() => {
+  productStore.fetchDataProduct();
+});
 
-const { products } = defineProps<{ products: Product }>();
 
 </script>
 
 <template>
     
-  <div class="w-full">
+  <div class="">
     <div >
       <label class="font-sans text-gray-900 text-3xl font-semibold leading-[38px]">
-        <!-- {{ products.title }} -->
         {{ products.title }}
       </label>
       <p class="font-sans text-2xl font-semibold text-[#0764A7] leading-8 pt-[10px]">

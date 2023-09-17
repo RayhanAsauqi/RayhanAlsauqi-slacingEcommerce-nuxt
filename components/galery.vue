@@ -1,23 +1,31 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
+import { useProductStore } from "~/store/productStore";
 import { Product } from "~/types/main";
 
-const { products } = defineProps<{ products: Product }>();
-</script> -->
+// const productStore = useProductStore();
+defineProps<{
+  products: Product;
+}>();
+
+
+</script>
 
 <template>
   <div class="container w-full">
-    <div class="flex">
+    <div class="">
       <img
-        src="../assets/img/Rectangle 27.png"
+        :src="products.thumbnail"
         alt=""
-        class="w-full bg-red-50"
+        class="w-[576px] h-[546px] rounded-lg"
       />
     </div>
-    <div class="w-1/4 flex justify-between">
-      <img src="../assets/img/Rectangle 27.png" alt="" />
+    <div class="w-1/4 flex justify-between" >
+      <img :src="products.images" alt="" />
       <img src="../assets/img/Rectangle 27.png" alt="" />
       <img src="../assets/img/Rectangle 27.png" alt="" />
       <img src="../assets/img/Rectangle 27.png" alt="" />
     </div>
   </div>
+
+ 
 </template>

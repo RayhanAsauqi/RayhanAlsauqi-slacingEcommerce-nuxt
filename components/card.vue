@@ -15,12 +15,12 @@ onMounted(() => {
 
 <template>
   <div
-    class="bg-white rounded-md border-gray-44 flex-col w-56 h-[430px] border border-slate-300"
+    class="bg-white rounded-md border border-gray-300 flex-col w-56 h-[430px] "
   >
     <img
       :src="products.thumbnail"
       alt=""
-      class="w-56 h-56 bg-slate-300 rounded-t-md"
+      class="w-56 h-56 bg-slate-300 rounded-t-md border border-gray-300 "
     />
     <div
       class="self-stretch h-[206px] p-6 flex-col justify-start items-start gap-6 flex"
