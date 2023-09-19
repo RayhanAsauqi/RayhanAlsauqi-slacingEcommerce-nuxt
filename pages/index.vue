@@ -92,9 +92,8 @@ onMounted(async () => {
   </div>
 
   <section class="px-20 py-24">
-    <div class="container  mx-auto px-8 ">
+    <div class="container mx-auto px-8">
       <LatestProduct />
-      
     </div>
   </section>
 
@@ -116,10 +115,28 @@ onMounted(async () => {
     </div>
   </section>
 
-  <footer class="px-20 bg-gray-900">
-    <div class="container mx-auto px-8 ">
-     <NewSletter />
+  <section class="px-20 bg-gray-900">
+    <div class="container mx-auto px-8">
+      <NewSletter />
     </div>
-    
+  </section>
+  <footer class="bg-slate-800 px-20">
+    <div class="container mx-auto px-8 py-16 justify-between">
+      <div class="flex justify-between">
+        <FooterHomePage />
+        <div class="flex gap-8">
+          <FooterSubLinkProduct />
+          <FooterSubLinkCompany />
+          <FooterSubLinkResources />
+          <FooterSubLinkSocial />
+          <FooterSubLinkLegal />
+        </div>
+      </div>
+    </div>
+    <div class="container px-8">
+      <div class="flex justify-between border-t border-t-gray-400">
+       <Icons />
+      </div>
+    </div>
   </footer>
 </template>

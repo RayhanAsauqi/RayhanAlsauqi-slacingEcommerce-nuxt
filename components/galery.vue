@@ -2,7 +2,7 @@
 import { useProductStore } from "~/store/productStore";
 import { Product } from "~/types/main";
 
-// const productStore = useProductStore();
+const productStore = useProductStore();
 defineProps<{
   products: Product;
 }>();
@@ -20,7 +20,7 @@ defineProps<{
       />
     </div>
     <div class="w-1/4 flex justify-between" >
-      <img :src="products.images" alt="" />
+      <img :src="products?.image" alt="" />
       <img src="../assets/img/Rectangle 27.png" alt="" />
       <img src="../assets/img/Rectangle 27.png" alt="" />
       <img src="../assets/img/Rectangle 27.png" alt="" />

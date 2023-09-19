@@ -17,17 +17,13 @@ export const useCartStore = defineStore("cart", {
       try {
         const response = await axios.get("https://dummyjson.com/carts/1");
         this.initialCart = response.data;
-        console.log(response.data);
       } catch (error) {}
     },
     async addItemProducts(productData: Product, cardId: number) {
       try {
-        console.log(productData);
         if (this.cart === null) {
           this.cart = { ...this.initialCart };
-        }
-
-        console.log(this.cart);
+        } 
         function convertToCartProduct(
           productData: Product,
           quantity: number
@@ -66,22 +62,23 @@ export const useCartStore = defineStore("cart", {
         if (response.status === 200) {
           this.cart = response.data;
         }
-        console.log(this.cart);
-      } catch (error) {}
+      } catch (error) {
+        console.log("add data error: ",error)
+      }
     },
     async deleteItemProduct(id: number) {
       try {
         if (this.cart === null) {
           this.cart = { ...this.initialCart };
         }
-        console.log(this.cart?.products)
         const filterRemoveData = this.cart?.products.filter((item) => item.id !== id);
-        console.log(filterRemoveData)
         const response = await axios.put("https://dummyjson.com/carts/1", {
           products: filterRemoveData
         });
         this.cart = response.data
-      } catch (error) {}
+      } catch (error) {
+        console.log("delete data error: ",error)
+      }
     },
   },
   // async deleteItemProduct(id:number) {

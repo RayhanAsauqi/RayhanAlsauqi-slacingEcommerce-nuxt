@@ -51,7 +51,7 @@ onMounted(() => {
             <h1
               class="grow shrink basis-0 text-gray-900 text-xl font-semibold leading-[30px]"
             >
-              {{ products.price }}
+              ${{ products.price }}
             </h1>
           </div>
         </div>

@@ -24,9 +24,15 @@ onMounted(() => {
       <div class="px-8 flex justify-between">
         <div>
           <NuxtLink to="/product">
-            <button class="px-4 py-3 rounded-lg bg-red-50 shadow flex gap-2">
+            <button
+              class="px-4 py-3 rounded-lg shadow flex gap-2 border border-gray-300"
+            >
               <img src="../../assets/svg/arrow-left.svg" alt="" />
-              <h1>Back</h1>
+              <h1
+                class="font-sans text-sm font-semibold leading-5 text-gray-700"
+              >
+                Back
+              </h1>
             </button>
           </NuxtLink>
         </div>
@@ -36,16 +42,13 @@ onMounted(() => {
           Product Detail
         </h1>
         <div>
-          
-
-         
           <button
             class="flex bg-[#0984DD] px-4 items-center rounded-lg gap-2 h-11"
             @click="cartStore.addItemProducts(product, 1)"
           >
-          <NuxtLink to="/cart">
-            <img src="../../assets/svg/plus.svg" alt="" />
-          </NuxtLink>
+            <NuxtLink to="/cart">
+              <img src="../../assets/svg/plus.svg" alt="" />
+            </NuxtLink>
             <h1 class="font-sans text-sm font-semibold leading-5 text-white">
               Add to Cart
             </h1>
@@ -56,10 +59,12 @@ onMounted(() => {
   </section>
 
   <section>
-    <div class="container px-20 pt-16 pb-[72px]">
-      <div class="flex justify-between ">
-        <Galery :products="product" :key="product?.id" />
-        <Details :products="product" :key="product?.id" />
+    <div class="px-20">
+      <div class="container px-8 pt-16 pb-[72px]">
+        <div class="flex">
+          <Galery :products="product" :key="product?.id" />
+          <Details :products="product" :key="product?.id" />
+        </div>
       </div>
     </div>
   </section>

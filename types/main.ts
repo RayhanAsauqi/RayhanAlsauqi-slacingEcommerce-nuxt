@@ -1,4 +1,5 @@
 export interface Product {
+[x: string]: string | undefined;
   id: number;
   title: string;
   price: number;
@@ -6,7 +7,7 @@ export interface Product {
   thumbnail: string;
   description: string;
   quantity: number
-  images: string;
+  images: string[];
 
 }
 

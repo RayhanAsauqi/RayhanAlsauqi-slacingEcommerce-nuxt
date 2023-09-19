@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useProductStore } from "~/store/productStore";
 import { onMounted } from "#imports";
+import { FooterSubLinkCompany } from "#build/components";
 
 const productStore = useProductStore();
 // const searchQueryProducts = ref("");
@@ -44,12 +45,22 @@ definePageMeta({
 
       <div class="px-5 pt-[72px]">
         <div class="container mx-auto w-full">
-          <div class=" flex justify-between">
+          <div class="flex justify-between">
             <div class="">
+              <Type class="pb-8" />
               <Type />
-              <Type />
+              <button
+                class="flex border px-4 py-[10px] rounded-lg mt-8 gap-2 bg-[#D8EEFD]"
+              >
+                <img src="../../assets/svg/refresh-ccw-02.svg" alt="" />
+                <p
+                  class="font-sans text-sm font-semibold leading-5 text-[#0764A7]"
+                >
+                  Reset Option
+                </p>
+              </button>
             </div>
-            <div class="flex flex-wrap gap-6 ">
+            <div class="flex flex-wrap gap-6 pl-6">
               <div
                 v-for="product in productStore.filteredProducts"
                 :key="product.id"
@@ -59,6 +70,7 @@ definePageMeta({
                   <Card :products="product" />
                 </NuxtLink>
               </div>
+              <Pagination />
             </div>
           </div>
         </div>
@@ -66,7 +78,4 @@ definePageMeta({
     </div>
   </section>
 
-  <section class="px-20">
-    <div class="container mx-auto px-5"></div>
-  </section>
 </template>

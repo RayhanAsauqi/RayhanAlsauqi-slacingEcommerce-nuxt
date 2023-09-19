@@ -1,5 +1,5 @@
 <template>
-    <div class="border border-gray-100 px-1 w-[230px] ">
+    <div class=" border-r px-1 w-[230px] ">
             <div class="w-[222px] border-r-gray-300">
               <div class="flex flex-col">
                 <h1 class="font-sans text-lg font-semibold leading-7 text-gray-700">heading</h1>
